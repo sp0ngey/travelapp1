@@ -1,0 +1,8 @@
+
+<%= form_tag({:controller => "flickr", :action => "flickrsearch"}, :method => "get") do %>
+  <%= label_tag(:tags, "Search for:") %>
+  <%= text_field_tag(:tags) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<p>Find me in app/views/flickr/flickrsearch.html.erb</p>
