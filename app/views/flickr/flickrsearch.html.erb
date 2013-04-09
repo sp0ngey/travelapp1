@@ -1,7 +1,7 @@
 
 <%= form_tag({:controller => "flickr", :action => "flickrsearch"}, :method => "get") do %>
-  <%= label_tag(:tags, "Search for:") %>
-  <%= text_field_tag(:tags) %>
+  <%= label_tag(:text, "Search for:") %>
+  <%= text_field_tag(:text) %>
   <%= submit_tag("Search") %>
 <% end %>
 

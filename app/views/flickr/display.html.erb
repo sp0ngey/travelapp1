@@ -1,7 +1,12 @@
 <h1>Flickr#display</h1>
 
 <div class="flickr">
-	<%= @photos.each do |p| %>
-		<%= image_tag(p.sizes[1]['source']) %>
-	<% end %>
+  <table>
+    <% @photos.each do |p| %>
+        <td>
+          <%= image_tag(p.sizes[0]['source']) %><br>
+          <%= p.title %>
+        </td>
+    <% end %>
+  </table>
 </div>

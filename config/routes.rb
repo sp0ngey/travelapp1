@@ -1,4 +1,8 @@
 Travelapp::Application.routes.draw do
+  get "instagram_api/instagram_search"
+
+  get "instagram_api/instagram_display"
+
   get "flickr/flickrsearch"
 
   get "flickr/display"

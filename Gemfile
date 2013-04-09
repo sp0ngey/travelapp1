@@ -5,8 +5,10 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+#gem 'sqlite3'
+gem 'activerecord-jdbcsqlite3-adapter'
 
+gem 'jruby-openssl'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,6 +24,7 @@ end
 
 gem 'jquery-rails'
 gem 'flickr'
+gem 'instagram'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
