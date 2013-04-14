@@ -7,8 +7,10 @@ Travelapp::Application.routes.draw do
 
   get "flickr/display"
 
-
-
+  match 'clipboard/show' => 'clipboard#show'
+  match 'clipboard/add_image' => 'clipboard#add_image'
+  match 'clipboard/del_image' => 'clipboard#del_image'
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
