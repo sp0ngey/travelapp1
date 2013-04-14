@@ -1,0 +1,20 @@
+<h1>Stupid clipboard listing</h1>
+<p>These are the following clib board items that belong to user &quot;<%= @userName %>&quot;</p>
+<p><b><%= @msg %></b></p>
+
+<table>
+	<% @cbItems.each do |item| %>
+		<tr>
+			<td>
+				<%= link_to 'Delete', :controller => 'clipboard', :action => 'del_image', :id => item.id, :img_url => item.url %>
+				
+			</td>
+			<td>
+				<%= image_tag(item.url) %>
+			</td>
+			<td>
+				<%= item.url %>
+			</td>
+		</tr>
+	<% end %>
+</table>

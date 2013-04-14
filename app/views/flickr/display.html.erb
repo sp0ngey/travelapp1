@@ -3,10 +3,17 @@
 <div class="flickr">
   <table>
     <% @photos.each do |p| %>
+      <tr>
         <td>
           <%= image_tag(p.sizes[0]['source']) %><br>
+        </td>
+	<td>
           <%= p.title %>
         </td>
+	<td>
+		<%= link_to 'Add to clipboard', :controller => 'clipboard', :action => 'add_image', :img_url => p.sizes[0]['source'] %>
+	</td>
+      </tr>
     <% end %>
   </table>
 </div>
