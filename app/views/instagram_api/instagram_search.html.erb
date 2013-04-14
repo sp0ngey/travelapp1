@@ -1,0 +1,10 @@
+
+
+<%= form_tag({:controller => "instagram_api", :action => "instagram_search"}, :method => "get") do %>
+  <%= label_tag(:instatags, "Search for:") %>
+  <%= text_field_tag "instatags" %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+
+<p>Find me in app/views/instagram_api/instagram_search.html.erb</p>

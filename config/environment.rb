@@ -7,7 +7,7 @@ Travelapp::Application.initialize!
 # This is where you initialise the Flickr API. Need to include Flickr API key here.
 require 'rubygems' 
 require 'flickr' 
-MY_KEY='enter flickr api key here'
+MY_KEY='6aac58d0b8b98bf60604ac3218771a08'
 class Flickr 
 	alias old_initialize initialize 
 	def initialize(api_key=MY_KEY, email=nil, password=nil) 

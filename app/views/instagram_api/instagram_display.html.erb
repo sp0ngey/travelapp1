@@ -1,0 +1,10 @@
+<h1>InstagramApi#instagram_display</h1>
+
+<div class="instagram_api">
+	<%= @instagramPhotos.each do |p| %>
+		<%= image_tag(p.images.thumbnail.url) %>
+	<% end %>
+
+</div>
+
+<p>Find me in app/views/instagram_api/instagram_display.html.erb</p>
