@@ -8,7 +8,7 @@ gem 'rails', '3.2.1'
 #'pg' is used for Heroku deployment. Heroku provides you with a PostgreSQL database for your app.
 gem 'pg'
 
-#sqlite2 is default for rails
+#sqlite3 is default for rails
 #gem 'sqlite3'
 
 # Use the following two gems instead of sqlite3 if you want to use jruby.

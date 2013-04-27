@@ -1,16 +1,19 @@
 Travelapp::Application.routes.draw do
-  get "instagram_api/instagram_search"
 
-  get "instagram_api/instagram_display"
+  root :to => 'flickr#flickrsearch'
+  get 'instagram_api/instagram_search'
 
-  get "flickr/flickrsearch"
+  get 'instagram_api/instagram_display'
 
-  get "flickr/display"
+  get 'flickr/flickrsearch'
+
+  get 'flickr/display'
 
   match 'clipboard/show' => 'clipboard#show'
   match 'clipboard/add_image' => 'clipboard#add_image'
   match 'clipboard/del_image' => 'clipboard#del_image'
- 
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
