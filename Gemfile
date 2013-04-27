@@ -5,11 +5,18 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-#'pg' is used for Heroku deployment. Heroku provides you with a PostgreSQL database for your app.
-gem 'pg'
+group :development, :test do
+  #sqlite3 is default for rails
+  gem 'sqlite3'
+end
 
-#sqlite3 is default for rails
-#gem 'sqlite3'
+group :production do
+  #'pg' is used for Heroku deployment. Heroku provides you with a PostgreSQL database for your app.
+  gem 'pg'
+end
+
+
+
 
 # Use the following two gems instead of sqlite3 if you want to use jruby.
 #gem 'activerecord-jdbcsqlite3-adapter'
