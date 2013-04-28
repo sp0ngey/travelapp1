@@ -1,8 +1,9 @@
 
+<h1>JBHNM Travel</h1>
+<h2>Search for places you want to go to...</h2>
 <%= form_tag({:controller => "flickr", :action => "flickrsearch"}, :method => "get") do %>
-  <%= label_tag(:text, "Search for:") %>
+  <%= label_tag(:text, "Inspire Me:") %>
   <%= text_field_tag(:text) %>
   <%= submit_tag("Search") %>
 <% end %>
 
-<p>Find me in app/views/flickr/flickrsearch.html.erb</p>
