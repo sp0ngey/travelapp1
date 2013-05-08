@@ -5,12 +5,12 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :test do
+group :test, :development do
   #sqlite3 is default for rails
   gem 'sqlite3'
 end
 
-group :development, :production do
+group :production do
   #'pg' is used for Heroku deployment. Heroku provides you with a PostgreSQL database for your app.
   gem 'pg'
 end
