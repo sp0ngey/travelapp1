@@ -6,7 +6,8 @@ Travelapp::Application.initialize!
 
 # This is where you initialise the Flickr API. Need to include Flickr API key here.
 require 'rubygems' 
-require 'flickr' 
+require 'flickr'
+
 MY_KEY='6aac58d0b8b98bf60604ac3218771a08'
 class Flickr 
 	alias old_initialize initialize 
@@ -23,4 +24,12 @@ require 'instagram'
 Instagram.configure do |config|
 	config.client_id = 'enter instagram client id here'
 	config.client_secret = 'enter instagram client secret here'
+end
+
+# This contains the API key info for using Youtube search.
+require 'google/api_client'
+module YTkey
+  GOOGLE_API_KEY = 'AIzaSyBdkoaVWHX_j5jsT3aZdY4StJPWBoCon0I'
+  GOOGLE_APP_1 = 'youtube'
+  GOOGLE_APP_VERSION_1 = 'v3'
 end

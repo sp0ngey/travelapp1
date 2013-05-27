@@ -1,5 +1,9 @@
 Travelapp::Application.routes.draw do
 
+  get "youtube/search"
+
+  get "youtube/display"
+
   root :to => 'flickr#flickrsearch'
   get 'instagram_api/instagram_search'
 

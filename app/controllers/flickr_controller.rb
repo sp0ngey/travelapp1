@@ -9,7 +9,7 @@ class FlickrController < ApplicationController
 				# of Array
 				#
 				@photos = flickr.photos(:text => params[:text], :per_page =>'10', :sort => 'relevance')
-				render 'display', :collection => @photos
+				render 'flickr/display'
 			end
 		end
 	end
