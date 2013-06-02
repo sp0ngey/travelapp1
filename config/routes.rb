@@ -4,18 +4,14 @@ Travelapp::Application.routes.draw do
 
   get "main/display"
 
-  get "youtube/search"
 
-  get "youtube/display"
 
 
   get 'instagram_api/instagram_search'
 
   get 'instagram_api/instagram_display'
 
-  get 'flickr/flickrsearch'
 
-  get 'flickr/display'
 
   match 'clipboard/show' => 'clipboard#show'
   match 'clipboard/add_image' => 'clipboard#add_image'
