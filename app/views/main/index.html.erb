@@ -1,0 +1,7 @@
+<h1>JBHNM</h1>
+<h2>This is a YouTube video and Flickr photo search...</h2>
+<%= form_tag({:controller => 'main', :action => 'index'}, :method => 'get') do %>
+    <%= label_tag(:text, 'Inspire Me:') %>
+    <%= text_field_tag(:text) %>
+    <%= submit_tag('Search') %>
+<% end %>

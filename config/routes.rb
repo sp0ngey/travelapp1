@@ -1,10 +1,14 @@
 Travelapp::Application.routes.draw do
+  root :to => 'main#index'
+  get "main/index"
+
+  get "main/display"
 
   get "youtube/search"
 
   get "youtube/display"
 
-  root :to => 'flickr#flickrsearch'
+
   get 'instagram_api/instagram_search'
 
   get 'instagram_api/instagram_display'
