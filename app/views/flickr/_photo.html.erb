@@ -1,0 +1,15 @@
+<table>
+
+      <tr>
+        <td>
+          <%= image_tag(photo.sizes[0]['source']) %><br>
+        </td>
+        <td>
+          <%= photo.title %>
+        </td>
+        <td>
+          <%= link_to 'Add to clipboard', :controller => 'clipboard', :action => 'add_image', :img_url => photo.sizes[0]['source'] %>
+        </td>
+      </tr>
+
+</table>

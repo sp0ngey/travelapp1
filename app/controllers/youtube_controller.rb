@@ -9,7 +9,7 @@ class YoutubeController < ApplicationController
         client = Google::APIClient.new(:key => YTkey::GOOGLE_API_KEY, :authorization => nil)
         youtube = client.discovered_api(YTkey::GOOGLE_APP_1, YTkey::GOOGLE_APP_VERSION_1)
 
-        @ytresult = client.execute!(:api_method => youtube.search.list, :parameters => {:q => params[:text], :part => 'snippet', :type => 'video', :videoEmbeddable => 'true'})
+        @youtubevideos = client.execute!(:api_method => youtube.search.list, :parameters => {:q => params[:text], :part => 'snippet', :type => 'video', :videoEmbeddable => 'true'})
         render 'youtube/display'
       end
     end
