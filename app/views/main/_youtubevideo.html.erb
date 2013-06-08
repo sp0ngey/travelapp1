@@ -4,6 +4,9 @@
     <td>
       <%= youtubevideo.snippet.title %><br>
       <iframe width=260 height=210 src="http://www.youtube.com/embed/<%= youtubevideo.id.videoId%>"></iframe><br>
+
+      <%-# TODO: current db only stores video thumbnail as jpg hence the url is for the jpg file, not the video url. Nor does it store a video -%>
+      <%= link_to 'Add to clipboard', :controller => 'clipboard', :action => 'add_image', :img_url => "http://www.youtube.com/embed/#{youtubevideo.id.videoId}" %><br>
     </td>
   </tr>
 
