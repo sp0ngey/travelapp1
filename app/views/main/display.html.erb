@@ -3,6 +3,7 @@
 <%= form_tag({:controller => 'main', :action => 'index'}, :method => 'get') do %>
     <%= label_tag(:text, 'Inspire Me:') %>
     <%= text_field_tag(:text) %>
+    <%= hidden_field_tag :searching, true %>
     <%= submit_tag('Search') %>
 <% end %>
 
