@@ -1,4 +1,12 @@
 Travelapp::Application.routes.draw do
+  resources :countries
+
+  resources :locations
+
+  resources :trip_items
+
+  resources :trips
+
   root :to => 'main#index'
   get "main/index"
 
