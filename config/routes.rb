@@ -1,4 +1,8 @@
 Travelapp::Application.routes.draw do
+  resources :media_items
+
+  resources :users
+
   resources :countries
 
   resources :locations

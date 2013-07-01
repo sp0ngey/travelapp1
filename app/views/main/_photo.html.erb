@@ -4,7 +4,7 @@
     <td>
       <%= photo.title %><br>
       <%= image_tag(photo.sizes[4]['source']) %><br>
-      <%= link_to 'Add to clipboard', :controller => 'clipboard', :action => 'add_image', :img_url => photo.sizes[4]['source'], :source => 'Photo' %><br>
+      <%= link_to 'Add to trip', :controller => 'clipboard', :action => 'add_image', :img_url => photo.sizes[4]['source'], :source => 'Photo' %><br>
 
     </td>
 

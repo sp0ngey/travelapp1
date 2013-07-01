@@ -13,7 +13,6 @@ class ClipboardController < ApplicationController
 	def add_image
 		@newItem = ClipboardImage.new()
 		@newItem.url = params[:img_url]
-		@newItem.user_id = 1
     @newItem.source = params[:source]
 		@newItem.save
 	end

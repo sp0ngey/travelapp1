@@ -1,3 +1,4 @@
 class Location < ActiveRecord::Base
-  has_one :country
+  belongs_to :country
+  has_many :trip_items
 end

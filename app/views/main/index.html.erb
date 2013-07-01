@@ -1,6 +1,11 @@
 <h1>JBHNM</h1>
-<h2>This is a YouTube video and Flickr photo search...</h2>
+
+<h2>Login as...</h2>
+
+
+<h3>This is a YouTube video and Flickr photo search...</h3>
 <%= form_tag({:controller => 'main', :action => 'index'}, :method => 'get') do %>
+    <%= collection_select(:app_user, :user_id, @users, :id, :full_name) %>
     <%= label_tag(:text, 'Inspire Me:') %>
     <%= text_field_tag(:text) %>
     <%= hidden_field_tag :searching, true %>

@@ -11,11 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130616150432) do
+ActiveRecord::Schema.define(:version => 20130630161631) do
 
   create_table "clipboard_images", :force => true do |t|
     t.string   "url"
-    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "source"
@@ -38,6 +37,13 @@ ActiveRecord::Schema.define(:version => 20130616150432) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "media_items", :force => true do |t|
+    t.integer  "clipboard_image_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "trip_item_id"
+  end
+
   create_table "trip_items", :force => true do |t|
     t.integer  "trip_id"
     t.string   "name"
@@ -50,6 +56,16 @@ ActiveRecord::Schema.define(:version => 20130616150432) do
   end
 
   create_table "trips", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+    t.string   "trip_name"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "title"
+    t.string   "first_name"
+    t.string   "last_name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

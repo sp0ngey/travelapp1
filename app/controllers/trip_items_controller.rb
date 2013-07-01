@@ -26,6 +26,7 @@ class TripItemsController < ApplicationController
   def new
     @trip_item = TripItem.new
 
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @trip_item }
@@ -41,6 +42,8 @@ class TripItemsController < ApplicationController
   # POST /trip_items.json
   def create
     @trip_item = TripItem.new(params[:trip_item])
+    @trip_item.name = params[:text]
+    @trip_item.trip_id = params[:user_trips][:trip_id]
 
     respond_to do |format|
       if @trip_item.save

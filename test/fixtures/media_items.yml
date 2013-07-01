@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  trip_item: 1
+  clipboard_image_id: 1
+
+two:
+  trip_item: 1
+  clipboard_image_id: 1

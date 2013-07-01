@@ -5,7 +5,7 @@
       <%= youtubevideo.snippet.title %><br>
       <iframe width=260 height=210 src="http://www.youtube.com/embed/<%= youtubevideo.id.videoId%>"></iframe><br>
 
-      <%= link_to 'Add to clipboard', :controller => 'clipboard', :action => 'add_image', :img_url => "http://www.youtube.com/embed/#{youtubevideo.id.videoId}", :source => "Video" %><br>
+      <%= link_to 'Add to trip', :controller => 'clipboard', :action => 'add_image', :img_url => "http://www.youtube.com/embed/#{youtubevideo.id.videoId}", :source => "Video" %><br>
     </td>
   </tr>
 

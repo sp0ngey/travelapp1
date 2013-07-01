@@ -41,6 +41,8 @@ class TripsController < ApplicationController
   # POST /trips.json
   def create
     @trip = Trip.new(params[:trip])
+    @trip.trip_name = params[:text]
+    @trip.user_id = params[:uid]
 
     respond_to do |format|
       if @trip.save

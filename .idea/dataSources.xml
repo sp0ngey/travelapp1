@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3740838679">
+  <component name="DataSourceManagerImpl" format="xml" hash="1772710">
     <data-source source="LOCAL" name="Rails travelapp1: production" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="d4f1bad8-48b1-496a-81e7-6de5846b9228">
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:db/production.postgresql</jdbc-url>
