@@ -15,6 +15,9 @@ class ClipboardController < ApplicationController
 		@newItem.url = params[:img_url]
     @newItem.source = params[:source]
 		@newItem.save
+
+
+    MediaItem.create(:clipboard_image_id => @newItem.id, :trip_item_id => 6)   #TODO need to assign trip_item_id properly via drop down. Maybe start playing with AJAX?
 	end
 	
 	def del_image

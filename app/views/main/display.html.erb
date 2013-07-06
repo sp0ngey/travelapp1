@@ -32,7 +32,14 @@
     <tr style="vertical-align:top">
         <td>
             <div class="flickr">
-              <%= render :partial => 'photo', :collection => @photos %>
+
+              <%#= form_tag({:controller => 'clipboard', :action => 'add_image'}, :method => 'post') do %>
+                  <%#= collection_select(:user_trips_items, :trip_item_id, @current_trip_items, :id, :trip_item_name) %>
+                  <%#= hidden_field_tag :img_url, @photos.sizes[4]['source'] %>
+                  <%#= hidden_field_tag :source, 'Photo' %>
+                  <%= render :partial => 'photo', :collection => @photos %>
+                  <%#= submit_tag('Add To Trip')   %>
+              <%# end %>
             </div>
         </td>
 

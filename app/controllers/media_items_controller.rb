@@ -41,6 +41,8 @@ class MediaItemsController < ApplicationController
   # POST /media_items.json
   def create
     @media_item = MediaItem.new(params[:media_item])
+    @media_item.clipboard_image_id = params[:clipboard_image_id]
+    @media_item.trip_item_id = params[:trip_item_id]
 
     respond_to do |format|
       if @media_item.save

@@ -15,6 +15,7 @@ class MainController < ApplicationController
             user = User.find(params[:app_user][:user_id])
             current_user(user)
             @current_user_trips = Trip.where(:user_id => @current_user.id)
+            @current_trip_items = TripItem.all    #TODO need to query trip items from a selected trip. Maybe we can leave this til Jquery
 
           #@current_user = User.where(:id => @current_id).pluck(:first_name).to_s
           # @photos will be a collection of photos returned as a PhotoCollection subclass
@@ -48,5 +49,9 @@ def current_user(user)
 end
 
 def trip_name
+  "#{trip_name}"
+end
+
+def trip_item_name
   "#{name}"
 end
