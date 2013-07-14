@@ -55,3 +55,13 @@ end
 def trip_item_name
   "#{name}"
 end
+
+def ajax_msg
+  @msg1 = "Buenos Dias!"
+  puts 'tst'
+  respond_to do |format|
+    format.html {redirect_to main_ajax_msg_url }
+    format.js {@msg1}
+    format.json { render json: @msg1}
+  end
+end

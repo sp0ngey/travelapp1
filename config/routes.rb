@@ -1,4 +1,6 @@
 Travelapp::Application.routes.draw do
+  resources :media
+
   resources :media_items
 
   resources :users
@@ -17,7 +19,7 @@ Travelapp::Application.routes.draw do
   get "main/display"
 
 
-
+  get "main/ajax_msg"
 
   get 'instagram_api/instagram_search'
 

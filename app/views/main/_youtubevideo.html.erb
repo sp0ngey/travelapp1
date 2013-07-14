@@ -4,8 +4,8 @@
     <td>
       <%= youtubevideo.snippet.title %><br>
       <iframe width=260 height=210 src="http://www.youtube.com/embed/<%= youtubevideo.id.videoId%>"></iframe><br>
-
-      <%= link_to 'Add to trip', :controller => 'clipboard', :action => 'add_image', :img_url => "http://www.youtube.com/embed/#{youtubevideo.id.videoId}", :source => "Video" %><br>
+      <div id="person-form" title="Person" style="display:none"></div>
+      <%= button_to 'Add to trip', media_path(url: "http://www.youtube.com/embed/#{youtubevideo.id.videoId}", source: "Video") %><br>
     </td>
   </tr>
 

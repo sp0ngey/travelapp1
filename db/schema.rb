@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130630161631) do
+ActiveRecord::Schema.define(:version => 20130707173712) do
 
   create_table "clipboard_images", :force => true do |t|
     t.string   "url"
@@ -37,10 +37,17 @@ ActiveRecord::Schema.define(:version => 20130630161631) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "media", :force => true do |t|
+    t.string   "url"
+    t.string   "source"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "media_items", :force => true do |t|
-    t.integer  "clipboard_image_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.integer  "medium_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "trip_item_id"
   end
 
