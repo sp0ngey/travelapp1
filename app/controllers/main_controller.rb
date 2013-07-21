@@ -28,6 +28,7 @@ class MainController < ApplicationController
 
           @youtubevideos = client.execute!(:api_method => youtube.search.list, :parameters => {:q => params[:text], :part => 'snippet', :type => 'video', :videoEmbeddable => 'true'})
 
+
           format.html{render :action => 'display'}
           #render 'main/display'
         end
@@ -56,12 +57,4 @@ def trip_item_name
   "#{name}"
 end
 
-def ajax_msg
-  @msg1 = "Buenos Dias!"
-  puts 'tst'
-  respond_to do |format|
-    format.html {redirect_to main_ajax_msg_url }
-    format.js {@msg1}
-    format.json { render json: @msg1}
-  end
-end
+

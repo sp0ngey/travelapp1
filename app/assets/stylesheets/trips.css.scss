@@ -1,3 +1,13 @@
 // Place all the styles related to the trips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#trip_msg{
+  position: absolute;
+  height: auto;
+  width: 300px;
+  background-color:#000010;
+  top: 98px;
+  left: 140.5px;
+  display: block;
+}

@@ -1,0 +1,11 @@
+$(function() {
+    $( "#trip_msg" ).dialog({
+        title: "The trip <%= @trip.trip_name %> has been added",
+        modal: true,
+        buttons: {
+            Ok: function() {
+                $( this ).dialog( "close" );
+            }
+        }
+    });
+});
