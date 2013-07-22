@@ -1,0 +1,8 @@
+<%= form_tag({:controller => 'media', :action => 'create'}, :method => 'post', :remote => true) do  %>
+    <%#= collection_select(:user_trips_items, :trip_item_id, @current_trip_items, :id, :trip_item_name) %>
+    <%= label_tag(:mi_id, 'Enter Media Item ID:') %>
+    <%= text_field_tag(:mi_id) %>
+    <%= hidden_field_tag :url, photo.sizes[4]['source'] %>
+    <%= hidden_field_tag :source, 'Photo' %>
+    <%= submit_tag('Add to Trip')   %>
+<% end %>
