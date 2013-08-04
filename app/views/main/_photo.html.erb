@@ -5,12 +5,14 @@
       <%= photo.title %><br>
       <%= image_tag(photo.sizes[4]['source']) %><br>
 
-      <div id='media-form' title='Add Item to Selected Trip and Trip Item'>
+      <div id='media-form' >
         <%= render :partial => 'modal', locals: {photo: photo} %>
       </div>
 
-      <button id="add-item">Add Item to Trip</button>
 
+
+      <div id="open-dialog"><%= link_to 'open dialog', :remote => true %></div>
+      <div id="your_dialog"></div>
     </td>
 
   </tr>
