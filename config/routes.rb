@@ -1,31 +1,22 @@
 Travelapp::Application.routes.draw do
+  root :to => 'main#index'
+
   resources :media
-
   resources :media_items
-
   resources :users
-
   resources :countries
-
   resources :locations
-
   resources :trip_items
-
   resources :trips
 
-  root :to => 'main#index'
   get "main/index"
-
   get "main/display"
-
   get "main/ajax_form"
-
   get 'instagram_api/instagram_search'
-
   get 'instagram_api/instagram_display'
 
 
-
+  match "/auth/:provider/callback" => "sessions#create"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -82,5 +73,5 @@ Travelapp::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  #match ':controller(/:action(/:id))(.:format)'
 end

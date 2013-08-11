@@ -13,83 +13,39 @@
 <% end %>
 
 
-<hr>
-
-<span id="GoogleSigninButton">
-  <span
-  class="g-signin"
-  data-theme="light"
-  data-callback="GoogleSigninCallback"
-  data-clientid="511956602967.apps.googleusercontent.com"
-  data-cookiepolicy="single_host_origin"
-  data-requestvisibleactions=""
-  data-scope="https://www.googleapis.com/auth/userinfo.email">
-  </span>
-</span>
-
-<a id="GoogleLogout" href="#">Logout of google</a>
-
-
-<div id="GoogleDialog" title="Title" class="ui-dialog">
-  <p>Message</p>
-</div>
-
-
-<!-- Place this asynchronous JavaScript just before your </body> tag -->
 <script type="text/javascript">
-    // Load the Google API asynchronously
-    (function() {
-        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-        po.src = 'https://apis.google.com/js/client:plusone.js?onload=OnLoadCallback';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
+    $(function() {
+        $("#LoginLink").click(
+                function() { $( "#jbhnm-signing-identity" ).dialog("open"); }
+        )
 
-    // Load the Facebook API asynchronously
-    (function(d){
-        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement('script'); js.id = id; js.async = true;
-        js.src = "//connect.facebook.net/en_US/all.js";
-        ref.parentNode.insertBefore(js, ref);
-    }(document));
-
-    // Additional JS functions here
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId      : '561632997226673', // App ID
-            //channelUrl : '//localhost:3000/channel.html', // Channel File
-            status     : true, // check login status
-            cookie     : true, // enable cookies to allow the server to access the session
-            xfbml      : true  // parse XFBML
-        });
-
-        FB.Event.subscribe('auth.authResponseChange', function(response) {
-            console.log(response);
-            if (response.status === 'connected') {
-                alert("Your user ID is " + response.authResponse.userID + "\n" +
-                      "Your access token is " + response.authResponse.accessToken);
+        $("#jbhnm-signing-identity").dialog({
+            autoOpen: false,
+            width: 350,
+            modal: true,
+            buttons: {
+                "Sign In": function() {
+                    $.ajax({
+                        type: 'post',
+                        url: '/auth/identity/callback',
+                        async: false,
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        success: function(data) {
+                            console.log(data);
+                        },
+                        error: function(jqXHR, status, error) {
+                            console.log("status:", status, "error:", error);
+                        }
+                    });
+                },
+                Cancel: function() {
+                    $( this ).dialog( "close" );
+                }
+            },
+            close: function() {
+                allFields.val( "" ).removeClass( "ui-state-error" );
             }
         });
-    };
-
-    // On page load finishing...
-    $( function() {
-        $( "#GoogleDialog" ).dialog({ autoOpen: false });
-        $("#GoogleLogout").click(GoogleSignoutAreYouSure);
     });
-
 </script>
-
-<!--
-  Below we include the Login Button social plugin. This button uses the JavaScript SDK to
-  present a graphical Login button that triggers the FB.login() function when clicked.
-
-  Learn more about options for the login button plugin:
-  /docs/reference/plugins/login/ -->
-
-<fb:login-button
- show-faces="false"
- width="200"
- max-rows="1"
- autologoutlink="true"></fb:login-button>
-

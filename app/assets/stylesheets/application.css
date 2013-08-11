@@ -11,4 +11,6 @@
  *= require_self
  *= require_tree .
 */
-
+div#jbhnm-signing-identity{ display: none; }
+div#jbhnm-signing-identity label, input { display:block; }
+div#jbhnm-signing-identity fieldset { padding:0; border:0; margin-top:25px; }
