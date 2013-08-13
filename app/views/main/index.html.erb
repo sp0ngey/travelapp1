@@ -15,24 +15,28 @@
 
 <script type="text/javascript">
     $(function() {
-        $("#LoginLink").click(
-                function() { $( "#jbhnm-signing-identity" ).dialog("open"); }
-        )
-
         $("#jbhnm-signing-identity").dialog({
             autoOpen: false,
             width: 350,
             modal: true,
             buttons: {
                 "Sign In": function() {
+                    var authKey = $("#auth_key").val();
+                    var pwd = $("#password").val();
+
+                    $('#jbhnm-signing-identity-form').css('display', 'none');
+                    $('#jbhnm-signing-identity-wait').css('display', 'block');
+
                     $.ajax({
                         type: 'post',
                         url: '/auth/identity/callback',
                         async: false,
-                        contentType: 'application/json',
+                        data: {auth_key: authKey, password: pwd},
+                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8', //'application/json',
                         dataType: 'json',
                         success: function(data) {
                             console.log(data);
+                            $("#jbhnm-signing-identity").dialog('close');
                         },
                         error: function(jqXHR, status, error) {
                             console.log("status:", status, "error:", error);
@@ -47,5 +51,9 @@
                 allFields.val( "" ).removeClass( "ui-state-error" );
             }
         });
+
+        $("#LoginLink").click(
+                function() { $("#jbhnm-signing-identity").dialog("open"); }
+        )
     });
 </script>

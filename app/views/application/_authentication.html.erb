@@ -5,14 +5,19 @@
 </p>
 
 <div id="jbhnm-signing-identity" title="Sign In">
-  <form>
-    <fieldset>
-      <label for="email">Email</label>
-      <input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" />
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all" />
-    </fieldset>
-  </form>
+  <div id="jbhnm-signing-identity-form">
+     <form>
+       <fieldset>
+         <label for="email">Email</label>
+         <input type="text" name="auth_key" id="auth_key" value="" class="text ui-widget-content ui-corner-all" />
+         <label for="password">Password</label>
+         <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all" />
+       </fieldset>
+     </form>
+  </div>
+  <div id="jbhnm-signing-identity-wait" class="hidden">
+    Please wait while we sign you in...
+  </div>
 </div>
 
 <hr />
