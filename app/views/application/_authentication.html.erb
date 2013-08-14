@@ -1,7 +1,7 @@
 <p>
-
-  <a id="LoginLink">Login</a> |
-  <%= link_to "Register", "/auth/identity/register" %>
+  <a id="LoginLink"><%= image_tag('generic_login_32x32.png') %></a>
+  <a id="LoginLinkFB"><%= image_tag('facebook_32x32.png') %></a>
+  <a id="LoginLinkTW"><%= image_tag('twitter_32x32.png') %></a>
 </p>
 
 <div id="jbhnm-signing-identity" title="Sign In">
@@ -14,10 +14,28 @@
          <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all" />
        </fieldset>
      </form>
+     <hr/>
+     Not a registered user? <a id="RegisterLink">Sign up here...</a>
   </div>
+
   <div id="jbhnm-signing-identity-wait" class="hidden">
     Please wait while we sign you in...
   </div>
+</div>
+
+<div id="jbhnm-signing-identity-register" title="Register...">
+  <div id="jbhnm-signing-identity-form">
+      <form method='post'>
+        <label for='name'>Name:</label>
+        <input type='text' id='name' name='name'/>
+        <label for='email'>Email:</label>
+        <input type='text' id='email' name='email'/>
+        <label for='password'>Password:</label>
+        <input type='password' id='password' name='password'/>
+        <label for='password_confirmation'>Confirm Password:</label>
+        <input type='password' id='password_confirmation' name='password_confirmation'/>
+      </form>
+    </div>
 </div>
 
 <hr />
