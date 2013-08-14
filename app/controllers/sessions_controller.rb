@@ -7,7 +7,14 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     respond_to do |format|
       format.html { redirect_to root_url }
-      format.json { render json:  grades}
+      format.json { render json:  {:status => "OK"} }
+    end
+  end
+
+  def failure()
+    respond_to do |format|
+      format.html { redirect_to root_url }
+      format.json { render json:  {:status => "FAIL"} }
     end
   end
 
