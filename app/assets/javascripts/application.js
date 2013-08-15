@@ -11,14 +11,19 @@ function InitSignInDialog()
         autoOpen: false,
         width: 350,
         modal: true,
+        draggable: false,
         buttons: {
             "Sign In": function() {
                 var authKey = $("#auth_key").val();
                 var pwd = $("#password").val();
                 var messageDiv =  $('#jbhnm-signing-identity-message');
 
+                $('#jbhnm-signing-identity-register').next(".ui-dialog-buttonpane button:contains('Register')").attr("disabled", true);
+
                 messageDiv.text("Please wait while we sign you in...");
                 $('#jbhnm-signing-identity-form').hide();
+                $('#jbhnm-signing-identity-message').removeClass("errorMsg");
+                $('#jbhnm-signing-identity-message').addClass("infoMsg");
                 $('#jbhnm-signing-identity-message').show();
 
                 $.ajax({
@@ -30,15 +35,21 @@ function InitSignInDialog()
                     dataType: 'json',
                     success: function(data) {
                         console.log(data);
-                        if( data['status'] != "OK" )
+                        if( data['status'] == "OK" )
                         {
-                            $('#AuthBar').hide();
+                            console.log("The sign in succeeded\n");
+                            $('#AuthBar_In').hide();
+                            $('#AuthBar_Out').show();
                             $("#jbhnm-signing-identity").dialog( "destroy" );
                         }
                         else
                         {
+                            console.log("The sign in FAILED!\n");
                             $('#jbhnm-signing-identity-form').show();
-                            $('#jbhnm-signing-identity-message').hide();
+                            $('#jbhnm-signing-identity-message').addClass("errorMsg");
+                            $('#jbhnm-signing-identity-message').removeClass("infoMsg");
+                            $('#jbhnm-signing-identity-message').text("Sign in failed. Please try again...");
+                            $('#jbhnm-signing-identity-register').next(".ui-dialog-buttonpane button:contains('Register')").attr("disabled", false);
                         }
 
                     },
@@ -53,7 +64,7 @@ function InitSignInDialog()
             }
         },
         close: function() {
-            allFields.val( "" ).removeClass( "ui-state-error" );
+            //allFields.val( "" ).removeClass( "ui-state-error" );
             $( this ).dialog( "destroy" );
         }
     });
@@ -63,47 +74,69 @@ function InitSignInDialog()
 
 function InitRegisterDialog()
 {
-    var registerDialogDiv = $('#jbhnm-signing-identity-register');
+    var registerDialogDiv = $('#jbhnm-register-identity');
+    $('#jbhnm-register-identity-form').show();
+    $('#jbhnm-register-identity-message').hide();
+
     registerDialogDiv.dialog({
         autoOpen: false,
         width: 350,
         modal: true,
+        draggable: false,
         buttons: {
             "Register": function() {
-                var authKey = $("#auth_key").val();
-                var pwd = $("#password").val();
+                var _name    = $("#name").val();
+                var _pwd     = $("#password_register").val();
+                var _pwdConf = $("#password_confirmation").val();
+                var _email   = $("#email_register").val();
 
-                $('#jbhnm-signing-identity-form').hide();
-                $('#jbhnm-signing-identity-message').show();
+                $('#jbhnm-register-identity-form').hide();
+                $('#jbhnm-register-identity-message').show();
+
+                $('#jbhnm-register-identity').next(".ui-dialog-buttonpane button:contains('Register')").attr("disabled", true);
 
                 $.ajax({
                     type: 'post',
-                    url: '/auth/identity/callback',
+                    url: '/auth/identity/register',
                     async: false,
-                    data: {auth_key: authKey, password: pwd},
-                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8', //'application/json',
+                    data: {name: _name, password: _pwd, password_confirmation: _pwdConf, email: _email},
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
                     dataType: 'json',
                     success: function(data) {
                         console.log(data);
-                        $("#jbhnm-signing-identity").dialog('destroy');
-                        if( data['status'] != "OK" )
-                        {
 
+                        if( data['status'] == "OK" )
+                        {
+                            console.log("The register in has succeeded\n");
+                            $('#jbhnm-signing-identity-message').addClass("infoMsg");
+                            $('#jbhnm-signing-identity-message').removeClass("errMsg");
+                            $('#jbhnm-signing-identity-message').text("Registration succeeded. Please log in...");
+                            $("#jbhnm-register-identity").dialog('destroy');
+                        }
+                        else
+                        {
+                            console.log("The register in has FAILED!!\n");
+                            $('#jbhnm-register-identity-message').addClass("errorMsg");
+                            $('#jbhnm-register-identity-message').removeClass("infoMsg");
+                            $('#jbhnm-register-identity-message').text("Registration has failed. Please try again or contact support...");
+                            $('#jbhnm-register-identity-form').show();
+                            $('#jbhnm-register-identity').next(".ui-dialog-buttonpane button:contains('Register')").attr("disabled", false);
                         }
                     },
                     error: function(jqXHR, status, error) {
                         console.log("status:", status, "error:", error);
-                        $("#jbhnm-signing-identity").dialog('destroy');
+                        $("#jbhnm-register-identity").dialog('destroy');
+
                     }
                 });
             },
             Cancel: function() {
-                $( this ).dialog( "destroy" );
+                $("#jbhnm-register-identity").dialog('destroy');
             }
         },
         close: function() {
-            allFields.val( "" ).removeClass( "ui-state-error" );
-            $("#jbhnm-signing-identity").dialog('destroy');
+            //allFields.val( "" ).removeClass( "ui-state-error" );
+            $("#jbhnm-register-identity").dialog('destroy');
         }
     });
 
