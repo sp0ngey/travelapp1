@@ -1,4 +1,4 @@
-<p>
+<p id="AuthBar">
   <a id="LoginLink"><%= image_tag('generic_login_32x32.png') %></a>
   <a id="LoginLinkFB"><%= image_tag('facebook_32x32.png') %></a>
   <a id="LoginLinkTW"><%= image_tag('twitter_32x32.png') %></a>
@@ -18,13 +18,14 @@
      Not a registered user? <a id="RegisterLink">Sign up here...</a>
   </div>
 
-  <div id="jbhnm-signing-identity-wait" class="hidden">
+  <div id="jbhnm-signing-identity-message" class="hidden">
     Please wait while we sign you in...
   </div>
 </div>
 
 <div id="jbhnm-signing-identity-register" title="Register..." class="hidden">
   <div id="jbhnm-signing-identity-form">
+      <span class="hidden">Message</span>
       <form method='post'>
         <label for='name'>Name:</label>
         <input type='text' id='name' name='name'/>
