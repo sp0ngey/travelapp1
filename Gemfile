@@ -39,7 +39,11 @@ gem 'flickr'
 gem 'instagram'
 gem 'google-api-client'
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'omniauth-identity'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
@@ -52,3 +56,6 @@ gem 'google-api-client'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+
+gem "koala", "~> 1.7.0rc1"
