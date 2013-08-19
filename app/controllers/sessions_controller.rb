@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    grades = Hash.new
-    grades["Bob"] = 82
+    logger.debug  "Entering the session controll CREATE method from " + params['provider']
     auth = request.env["omniauth.auth"]
     user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
     session[:user_id] = user.id
@@ -14,12 +13,13 @@ class SessionsController < ApplicationController
   def failure()
     respond_to do |format|
       format.html { redirect_to root_url }
-      format.json { render json:  {:status => "FAIL"} }
+      format.json { render json:  {:status => "FAIL", :reason => params['message']} }
     end
   end
 
   def destroy
     session[:user_id] = nil
+    logger.debug("Session id is " + ((session[:user_id].nil?) ? "NIL" : session[:user_id]));
     redirect_to root_url, :notice => "Signed out!"
   end
 end

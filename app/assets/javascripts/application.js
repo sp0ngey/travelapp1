@@ -48,7 +48,10 @@ function InitSignInDialog()
                             $('#jbhnm-signing-identity-form').show();
                             $('#jbhnm-signing-identity-message').addClass("errorMsg");
                             $('#jbhnm-signing-identity-message').removeClass("infoMsg");
-                            $('#jbhnm-signing-identity-message').text("Sign in failed. Please try again...");
+                            if( data['reason'] == "invalid_credentials" )
+                                $('#jbhnm-signing-identity-message').text("Sorry, but we did not recognise either your user name or password. Please try again...");
+                            else
+                                $('#jbhnm-signing-identity-message').text("Sign in failed for an unknown reason! Please try again or contact support...");
                             $('#jbhnm-signing-identity-register').next(".ui-dialog-buttonpane button:contains('Register')").attr("disabled", false);
                         }
 
@@ -124,9 +127,7 @@ function InitRegisterDialog()
                         }
                     },
                     error: function(jqXHR, status, error) {
-                        console.log("status:", status, "error:", error);
-                        $("#jbhnm-register-identity").dialog('destroy');
-
+                        console.log("status: " + status + "\nerror: " + error);
                     }
                 });
             },
@@ -146,5 +147,5 @@ function InitRegisterDialog()
 /* Execute when body has finished loading... */
 $(function() {
     $("#LoginLink").click(function() {  InitSignInDialog().dialog("open"); });
-    $("#RegisterLink").click(function() { InitRegisterDialog().dialog("open"); });
+    $("#RegisterLink").click(function() {  $('#jbhnm-signing-identity-message').hide(); InitRegisterDialog().dialog("open"); });
 });

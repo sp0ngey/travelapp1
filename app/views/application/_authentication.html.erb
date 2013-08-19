@@ -1,12 +1,12 @@
 <div id="AuthBar">
-  <div id="AuthBar_In">
-      <a id="LoginLink"><%= image_tag('generic_login_32x32.png') %></a>
-      <a id="LoginLinkFB"><%= image_tag('facebook_32x32.png') %></a>
-      <a id="LoginLinkTW"><%= image_tag('twitter_32x32.png') %></a>
-  </div>
-  <div id="AuthBar_Out" class="hidden">
-    <a id="LogoutLink">Logout</a>
-  </div>
+      <div id="AuthBar_In" class="<%= ((!session.has_key?("user_id") || session[:user_id].nil?) ? "visible" : "hidden")%>">
+        <a id="LoginLink"><%= image_tag('generic_login_32x32.png') %></a>
+        <a id="LoginLinkFB" href="/auth/facebook"><%= image_tag('facebook_32x32.png') %></a>
+        <a id="LoginLinkTW"><%= image_tag('twitter_32x32.png') %></a>
+      </div>
+      <div id="AuthBar_Out" class="<%= ((session.has_key?("user_id") && !session[:user_id].nil?) ? "visible" : "hidden")%>">
+        <a id="LogoutLink" href="/auth/logout">Logout</a>
+      </div>
 </div>
 
 <div id="jbhnm-signing-identity" title="Sign In" class="hidden">
@@ -32,7 +32,6 @@
   </div>
 
   <div id="jbhnm-register-identity-form">
-      <span class="hidden">Message</span>
       <form method='post'>
         <label for='name'>Name:</label>
         <input type='text' id='name' name='name'/>
