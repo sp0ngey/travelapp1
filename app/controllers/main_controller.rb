@@ -1,17 +1,14 @@
 class MainController < ApplicationController
   def index
-
     @users = User.all
 
     flickr = Flickr.new
     respond_to do |format|
       if params[:text].blank?
-
         flash.now[:notice] = 'Please enter a search string' if params[:searching]
         format.html{ render :action => 'index'}
       else
         begin
-
             user = User.find(params[:app_user][:user_id])
             current_user(user)
             @current_user_trips = Trip.where(:user_id => @current_user.id)
