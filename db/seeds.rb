@@ -8,7 +8,7 @@
 
 
 #MediaItem.delete_all
-#Trip.create(user_id: 1, trip_name: 'Japan May 2013')
+#User.create(title: 'Mr', first_name: 'Samuel', last_name: 'Pun')
 #Trip.create(user_id: 1, trip_name: 'France 2013')
 
 Medium.delete_all
