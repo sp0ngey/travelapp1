@@ -11,7 +11,6 @@ Travelapp::Application.routes.draw do
 
   get "main/index"
   get "main/display"
-  get "main/ajax_form"
   get 'instagram_api/instagram_search'
   get 'instagram_api/instagram_display'
 

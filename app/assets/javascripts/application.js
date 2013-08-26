@@ -149,3 +149,26 @@ $(function() {
     $("#LoginLink").click(function() {  InitSignInDialog().dialog("open"); });
     $("#RegisterLink").click(function() {  $('#jbhnm-signing-identity-message').hide(); InitRegisterDialog().dialog("open"); });
 });
+
+function AddPhotoToTripItemDialog()
+{
+    var mediaPartialDialogDiv = $("#media-partial");
+
+    $("#modal-form").show();
+
+    mediaPartialDialogDiv.dialog({
+        autoOpen: false,
+        width: 350,
+        modal: true,
+        draggable: false,
+        buttons: {
+            Cancel: function() {$(this).dialog("destroy");}
+        }
+    });
+    return mediaPartialDialogDiv;
+}
+
+/* This is for loading up the modal form when adding a photo to a trip item */
+$(function() {
+    $("#add-photo-to-trip").click(function() {AddPhotoToTripItemDialog().dialog("open"); });
+});

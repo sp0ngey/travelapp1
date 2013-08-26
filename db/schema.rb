@@ -13,6 +13,13 @@
 
 ActiveRecord::Schema.define(:version => 20130811130106) do
 
+  create_table "clipboard_images", :force => true do |t|
+    t.string   "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "source"
+  end
+
   create_table "countries", :force => true do |t|
     t.string   "name"
     t.string   "abbreviation"

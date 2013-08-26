@@ -54,6 +54,3 @@ def trip_item_name
   "#{name}"
 end
 
-def ajax_form
-  #render :partial => 'modal', locals: {photo: @photo}
-end
