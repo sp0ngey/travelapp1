@@ -1,3 +1,4 @@
+<% if( current_user() ) %>
 <div id="modal-form">
     <%= form_tag({:controller => 'media', :action => 'create'}, :method => 'post', :remote => true) do  %>
         <%= collection_select(:user_trips_items, :trip_item_id, @current_trip_items, :id, :trip_item_name) %>
@@ -8,3 +9,4 @@
         <%= submit_tag('Add to Trip')   %>
     <% end %>
 </div>
+<% end %>
