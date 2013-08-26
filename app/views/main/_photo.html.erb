@@ -6,7 +6,20 @@
       <%= image_tag(photo.sizes[4]['source']) %><br>
 
       <div id="media-partial" class="hidden" >
-        <%= render :partial => 'modal', locals: {photo: photo} %>
+        <% if( current_user() ) %>
+            <div id="modal-form">
+
+                  <%= form_tag( :method => 'post') do  %>
+
+                      <%= label_tag(:mi_id, 'Enter Trip Item ID:') %>
+                      <%= text_field_tag(:mi_id) %>
+                      <%= hidden_field_tag :url, photo.sizes[4]['source'] %>
+                      <%= hidden_field_tag :source, 'Photo' %>
+
+                  <% end %>
+            </div>
+        <% end %>
+        <%#= render :partial => 'modal', locals: {photo: photo} %>
       </div>
 
       <a id="add-photo-to-trip">Add to Trip</a>

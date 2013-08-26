@@ -150,6 +150,7 @@ $(function() {
     $("#RegisterLink").click(function() {  $('#jbhnm-signing-identity-message').hide(); InitRegisterDialog().dialog("open"); });
 });
 
+
 function AddPhotoToTripItemDialog()
 {
     var mediaPartialDialogDiv = $("#media-partial");
@@ -196,7 +197,10 @@ function AddPhotoToTripItemDialog()
     return mediaPartialDialogDiv;
 }
 
-/* This is for loading up the modal form when adding a photo to a trip item */
+
+
+// This is for loading up the modal form when adding a photo to a trip item
 $(function() {
     $("#add-photo-to-trip").click(function() {AddPhotoToTripItemDialog().dialog("open"); });
 });
+
