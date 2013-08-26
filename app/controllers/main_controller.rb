@@ -9,12 +9,15 @@ class MainController < ApplicationController
         format.html{ render :action => 'index'}
       else
         begin
-            user = User.find(params[:app_user][:user_id])
-            current_user(user)
-            @current_user_trips = Trip.where(:user_id => @current_user.id)
-            @current_trip_items = TripItem.all    #TODO need to query trip items from a selected trip. Maybe we can leave this til Jquery
+            if( current_user() )
+              @current_user_trips = Trip.where(:user_id => @current_user.id)
+              @current_trip_items = TripItem.all
+            else
+              @current_user_trips = nil
+              @current_trip_items = nil
+            end
+            logger.debug "In the MAIN CONTROLLER and the current user id is " + (current_user() ? current_user().id.to_s() : "NOT LOGGED IN")
 
-          #@current_user = User.where(:id => @current_id).pluck(:first_name).to_s
           # @photos will be a collection of photos returned as a PhotoCollection subclass
           # of Array
           @photos = flickr.photos(:text => params[:text], :per_page =>'5', :sort => 'relevance')
