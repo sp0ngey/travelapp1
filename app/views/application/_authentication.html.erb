@@ -1,10 +1,10 @@
 <div id="AuthBar">
-      <div id="AuthBar_In" class="<%= ((!session.has_key?("user_id") || session[:user_id].nil?) ? "visible" : "hidden")%>">
+      <div id="AuthBar_In" class="<%= !current_user() ? "visible" : "hidden" %>">
         <a id="LoginLink"><%= image_tag('generic_login_32x32.png') %></a>
         <a id="LoginLinkFB" href="/auth/facebook"><%= image_tag('facebook_32x32.png') %></a>
         <a id="LoginLinkTW"><%= image_tag('twitter_32x32.png') %></a>
       </div>
-      <div id="AuthBar_Out" class="<%= ((session.has_key?("user_id") && !session[:user_id].nil?) ? "visible" : "hidden")%>">
+      <div id="AuthBar_Out" class="<%= current_user() ? "visible" : "hidden" %>">
         <a id="LogoutLink" href="/auth/logout">Logout</a>
       </div>
 </div>

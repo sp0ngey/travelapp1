@@ -1,49 +1,45 @@
 <h1>Search Results</h1>
 
-<p>You are logged in as <%= @current_user.first_name %></p>
+<p>
+  <% if( current_user() ) %>
+  You are logged in as <%= @current_user.name %>
+  <% else %>
+  You are not logged in. All trip creations will be temporary and cannot be saved until you do so.
+  <% end %>
+</p>
 
-<%#= form_tag({:controller => 'main', :action => 'index'}, :method => 'get') do %>
-    <%#= label_tag(:text, 'Inspire Me:') %>
-    <%#= text_field_tag(:text) %>
-    <%#= hidden_field_tag :searching_from_display, true %>
-    <%#= submit_tag('Search') %>
-<%# end %>
+<% if( current_user() ) %>
+    <%= form_tag({:controller => 'trips', :action => 'create'}, :method => 'post', :remote => true) do %>
+        <%= label_tag(:text, 'Enter Trip Name:') %>
+        <%= text_field_tag(:text) %>
+        <%= hidden_field_tag :creating, true %>
+        <%= submit_tag('Create Trip')   %>
+    <% end %>
 
-<%= form_tag({:controller => 'trips', :action => 'create'}, :method => 'post', :remote => true) do %>
-    <%= label_tag(:text, 'Enter Trip Name:') %>
-    <%= text_field_tag(:text) %>
-    <%= hidden_field_tag :creating, true %>
-    <%= hidden_field_tag :uid, @current_user.id %>
-    <%= submit_tag('Create Trip')   %>
+    <div id="trip_msg_background"></div>
+    <div id="trip_msg"></div>
+
+    <%= form_tag({:controller => 'trip_items', :action => 'create'}, :method => 'post') do %>
+        <%= collection_select(:user_trips, :trip_id, @current_user_trips, :id, :trip_name) %>
+        <%= label_tag(:text, 'Assign trip item name:') %>
+        <%= text_field_tag(:text) %>
+        <%= hidden_field_tag :creating_trip_item, true %>
+        <%= submit_tag('Create Trip Item')   %>
+    <% end %>
 <% end %>
-<div id="trip_msg_background"></div>
-<div id="trip_msg"></div>
-
-<%= form_tag({:controller => 'trip_items', :action => 'create'}, :method => 'post') do %>
-    <%= collection_select(:user_trips, :trip_id, @current_user_trips, :id, :trip_name) %>
-    <%= label_tag(:text, 'Assign trip item name:') %>
-    <%= text_field_tag(:text) %>
-    <%= hidden_field_tag :creating_trip_item, true %>
-    <%= submit_tag('Create Trip Item')   %>
-<% end %>
-
-<%#= link_to 'My Clippings', :controller => 'clipboard', :action => 'show' %>
 
 <table>
 
     <tr style="vertical-align:top">
         <td>
             <div class="flickr">
-
                   <%= render :partial => 'photo', :collection => @photos %>
-
             </div>
         </td>
 
         <td>
             <div class="youtube">
               <%= render :partial => 'youtubevideo', :collection => @youtubevideos.data.items %>
-
             </div>
         </td>
     </tr>
