@@ -40,16 +40,20 @@ class TripsController < ApplicationController
   # POST /trips
   # POST /trips.json
   def create
-    @trip = Trip.new(params[:trip])
+    dump = PP.pp(params, "")
+    logger.debug dump
+
+    @trip = Trip.new()
     @trip.trip_name = params[:text]
-    @trip.user_id = params[:uid]
+    @trip.user_id = current_user().id
 
     respond_to do |format|
       if @trip.save
-        #format.html #{ redirect_to @trip, notice: 'Trip was successfully created.' }
+        format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
         format.js
         #format.json { render json: @trip, status: :created, location: @trip }
       else
+        logger.debug("\nFAIL\n")
         format.html { render action: "new" }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end
