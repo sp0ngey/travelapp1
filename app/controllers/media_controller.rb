@@ -46,14 +46,12 @@ class MediaController < ApplicationController
 
     respond_to do |format|
       if @medium.save
-        format.js
-        #format.html
-
-        #format.json { render json: @medium, status: :created, location: @medium }
+        format.html { redirect_to root_url }
+        format.json { render json:  {:status => "OK"} }
         MediaItem.create(:medium_id => @medium.id, :trip_item_id => params[:mi_id])   #TODO need to assign trip_item_id properly via drop down. Maybe start playing with AJAX?
       else
-        format.html { render action: "new" }
-        format.json { render json: @medium.errors, status: :unprocessable_entity }
+        format.html { redirect_to root_url }
+        format.json { render json:  {:status => "FAIL"} }
       end
     end
   end

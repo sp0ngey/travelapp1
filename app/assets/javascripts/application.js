@@ -162,6 +162,34 @@ function AddPhotoToTripItemDialog()
         modal: true,
         draggable: false,
         buttons: {
+            "Add to Trip Item": function() {
+                var tripItemID = $("#mi_id").val();
+                var photoURL = $("#url").val();
+                var sourceType = $("#source").val();
+
+                $("#modal-form").hide();
+
+                $.ajax({
+                    type: 'post',
+                    url:'/media',
+                    async: false,
+                    data: {mi_id: tripItemID, url: photoURL, source: sourceType},
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8', //'application/json'
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data);
+                        if( data['status'] == "OK")
+                        {
+                            console.log("Successfully added photo\n");
+                            $("#media-partial").dialog("destroy");
+                        }
+                        else
+                        {
+                            console.log("Something failed...\n");
+                        }
+                    }
+                });
+            },
             Cancel: function() {$(this).dialog("destroy");}
         }
     });
