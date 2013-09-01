@@ -22,7 +22,8 @@
         <%#= render :partial => 'modal', locals: {photo: photo} %>
       </div>
 
-      <a id="add-photo-to-trip">Add to Trip</a>
+      <a id="add-photo-to-trip">Add to Trip</a><br>
+      <%= photo.sizes[4]['source'] %>
     </td>
 
   </tr>

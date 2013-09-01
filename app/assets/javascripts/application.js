@@ -168,7 +168,10 @@ function AddPhotoToTripItemDialog()
                 var photoURL = $("#url").val();
                 var sourceType = $("#source").val();
 
+                var mystr = "The trip item ID is " + tripItemID;
                 $("#modal-form").hide();
+
+                console.log(mystr)
 
                 $.ajax({
                     type: 'post',
@@ -178,6 +181,7 @@ function AddPhotoToTripItemDialog()
                     contentType: 'application/x-www-form-urlencoded; charset=UTF-8', //'application/json'
                     dataType: 'json',
                     success: function(data) {
+
                         console.log(data);
                         if( data['status'] == "OK")
                         {
@@ -189,6 +193,7 @@ function AddPhotoToTripItemDialog()
                             console.log("Something failed...\n");
                         }
                     }
+
                 });
             },
             Cancel: function() {$(this).dialog("destroy");}
