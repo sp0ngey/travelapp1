@@ -6,7 +6,7 @@
       <%= image_tag(photo.sizes[4]['source']) %><br>
 
       <%= javascript_tag do %>
-        window.photoID = '<%= j photo.id %>';
+        window.photoID = 321898;
       <% end %>
 
       <%= content_tag 'div', id: "media-partial-"+ photo.id, class: 'hidden', title: photo.title do %>
