@@ -153,12 +153,12 @@ $(function() {
 
 function AddPhotoToTripItemDialog(me)
 {
-    var mediaPartialPhotoIDTag = "#media-partial-"+photoID;
-    var mediaPartialDialogDiv = $(mediaPartialPhotoIDTag);
-
     var idString = me.attr('id');
     var photoID = idString.substr((idString.lastIndexOf('-') + 1));
     console.log("Adding trip for id " + photoID);
+
+    var mediaPartialPhotoIDTag = "#media-partial-"+photoID;
+    var mediaPartialDialogDiv = $(mediaPartialPhotoIDTag);
 
     $("#modal-form-"+photoID).show();
 
