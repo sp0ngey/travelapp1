@@ -20,7 +20,7 @@ class MainController < ApplicationController
 
           # @photos will be a collection of photos returned as a PhotoCollection subclass
           # of Array
-          @photos = flickr.photos(:text => params[:text], :per_page =>'1', :sort => 'relevance')
+          @photos = flickr.photos(:text => params[:text], :per_page =>'2', :sort => 'relevance')
 
           #youtube search
           client = Google::APIClient.new(:key => YTkey::GOOGLE_API_KEY, :authorization => nil)

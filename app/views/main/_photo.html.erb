@@ -1,15 +1,20 @@
-<table>
+
 
   <tr style="vertical-align:top">
     <td>
       <%= photo.title %><br>
       <%= image_tag(photo.sizes[4]['source']) %><br>
 
-      <div id="media-partial" class="hidden" >
-        <% if( current_user() ) %>
-            <div id="modal-form">
+      <%= javascript_tag do %>
+        window.photoID = '<%= j photo.id %>';
+      <% end %>
 
-                  <%= form_tag( :method => 'post') do  %>
+      <%= content_tag 'div', id: "media-partial-"+ photo.id, class: 'hidden', title: photo.title do %>
+
+        <% if( current_user() ) %>
+            <%= content_tag 'div', id: 'modal-form-'+photo.id do %>
+
+                  <%= form_tag( :method => 'post', :id => 'form-'+photo.id) do  %>
 
                       <%= label_tag(:mi_id, 'Enter Trip Item ID:') %>
                       <%= text_field_tag(:mi_id) %>
@@ -17,15 +22,19 @@
                       <%= hidden_field_tag :source, 'Photo' %>
 
                   <% end %>
-            </div>
+            <% end %>
         <% end %>
         <%#= render :partial => 'modal', locals: {photo: photo} %>
-      </div>
 
-      <a id="add-photo-to-trip">Add to Trip</a><br>
-      <%= photo.sizes[4]['source'] %>
+      <% end %>
+
+      <a id="add-photo-to-trip-<%= photo.id %>">Add to Trip</a><br>
+      <div id="div-id-<%= photo_counter %>">
+        <%= photo.sizes[4]['source'] %>
+      </div><br>
+      <%= photo.id %>
     </td>
 
   </tr>
 
-</table>
+

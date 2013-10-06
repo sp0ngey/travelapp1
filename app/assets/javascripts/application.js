@@ -153,9 +153,13 @@ $(function() {
 
 function AddPhotoToTripItemDialog()
 {
-    var mediaPartialDialogDiv = $("#media-partial");
+    var mediaPartialPhotoIDTag = "#media-partial-"+photoID;
 
-    $("#modal-form").show();
+    var mediaPartialDialogDiv = $(mediaPartialPhotoIDTag);
+
+    //alert(photoID);
+
+    $("#modal-form-"+photoID).show();
 
     mediaPartialDialogDiv.dialog({
         autoOpen: false,
@@ -169,7 +173,7 @@ function AddPhotoToTripItemDialog()
                 var sourceType = $("#source").val();
 
                 var mystr = "The trip item ID is " + tripItemID;
-                $("#modal-form").hide();
+                $("#modal-form-"+photoID).hide();
 
                 console.log(mystr)
 
@@ -186,7 +190,7 @@ function AddPhotoToTripItemDialog()
                         if( data['status'] == "OK")
                         {
                             console.log("Successfully added photo\n");
-                            $("#media-partial").dialog("destroy");
+                            $(mediaPartialPhotoIDTag).dialog("destroy");
                         }
                         else
                         {
@@ -206,6 +210,6 @@ function AddPhotoToTripItemDialog()
 
 // This is for loading up the modal form when adding a photo to a trip item
 $(function() {
-    $("#add-photo-to-trip").click(function() {AddPhotoToTripItemDialog().dialog("open"); });
+    $("#add-photo-to-trip-"+photoID).click(function() {AddPhotoToTripItemDialog().dialog("open"); alert(photoID); });
 });
 
