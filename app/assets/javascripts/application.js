@@ -151,13 +151,14 @@ $(function() {
 });
 
 
-function AddPhotoToTripItemDialog()
+function AddPhotoToTripItemDialog(me)
 {
     var mediaPartialPhotoIDTag = "#media-partial-"+photoID;
-
     var mediaPartialDialogDiv = $(mediaPartialPhotoIDTag);
 
-    //alert(photoID);
+    var idString = me.attr('id');
+    var photoID = idString.substr((idString.lastIndexOf('-') + 1));
+    console.log("Adding trip for id " + photoID);
 
     $("#modal-form-"+photoID).show();
 
@@ -210,6 +211,8 @@ function AddPhotoToTripItemDialog()
 
 // This is for loading up the modal form when adding a photo to a trip item
 $(function() {
-    $("#add-photo-to-trip-"+photoID).click(function() {AddPhotoToTripItemDialog().dialog("open"); alert(photoID); });
+    console.log("Initialising sam...");
+    console.log($("a[id^='add-photo-to-trip-']"));
+    $("a[id^='add-photo-to-trip-']").click(function() {AddPhotoToTripItemDialog($(this)).dialog("open"); });
 });
 
